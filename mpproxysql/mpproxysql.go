@@ -53,7 +53,7 @@ func (p ProxySQLPlugin) defaultGraphdef() map[string]mp.Graphs {
 			Label: labelPrefix + " Transactions",
 			Unit:  "float",
 			Metrics: []mp.Metrics{
-				{Name: "Active_Transactions", Label: "Active", Diff: true, Stacked: false},
+				{Name: "Active_Transactions", Label: "Active", Diff: false, Stacked: false},
 			},
 		},
 		"connections": {
