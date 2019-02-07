@@ -61,11 +61,11 @@ func (p ProxySQLPlugin) defaultGraphdef() map[string]mp.Graphs {
 			Unit:  "float",
 			Metrics: []mp.Metrics{
 				{Name: "Client_Connections_aborted", Label: "Client aborted", Diff: true, Stacked: false},
-				{Name: "Client_Connections_connected", Label: "Client connected", Diff: true, Stacked: false},
+				{Name: "Client_Connections_connected", Label: "Client connected", Diff: false, Stacked: false},
 				{Name: "Client_Connections_created", Label: "Client created", Diff: true, Stacked: false},
 				{Name: "Client_Connections_non_idle", Label: "Client non idle", Diff: false, Stacked: false},
 				{Name: "Server_Connections_aborted", Label: "Server aborted", Diff: true, Stacked: false},
-				{Name: "Server_Connections_connected", Label: "Server connected", Diff: true, Stacked: false},
+				{Name: "Server_Connections_connected", Label: "Server connected", Diff: false, Stacked: false},
 				{Name: "Server_Connections_created", Label: "Server created", Diff: true, Stacked: false},
 				{Name: "Server_Connections_delayed", Label: "Server delayed", Diff: true, Stacked: false},
 			},
