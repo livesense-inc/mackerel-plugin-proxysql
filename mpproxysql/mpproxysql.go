@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 
@@ -26,6 +27,7 @@ type ProxySQLPlugin struct {
 	EnableConnectionPool bool
 }
 
+const pluginVersion = "v0.0.3"
 const defaultMetricKeyPrefix = "proxysql"
 const defaultMetricName = "ProxySQL"
 
@@ -400,16 +402,22 @@ func atof(str string) (float64, error) {
 
 // Do the plugin
 func Do() {
+	version := flag.Bool("v", false, "prints version")
 	optHost := flag.String("host", "127.0.0.1", "Hostname")
 	optPort := flag.String("port", "6032", "Port")
 	optSocket := flag.String("socket", "", "Unix socket path")
 	optUser := flag.String("username", "stats", "Username")
 	optPass := flag.String("password", "stats", "Password")
-	optTempfile := flag.String("tempfile", "", "Temp file name")
+	optTempfile := flag.String("tempfile", "/tmp/mackerel-plugin-proxysql", "Temp file name")
 	optEnableMonitorStats := flag.Bool("monitor-stats", false, "Enable Monitor Stats metrics")
 	optEnableConnectionPool := flag.Bool("connection-pool", false, "Enable Connection Pool metrics")
 	optMetricKeyPrefix := flag.String("metric-key-prefix", "proxysql", "metric key prefix")
 	flag.Parse()
+
+	if *version {
+		fmt.Println(pluginVersion)
+		os.Exit(0)
+	}
 
 	var proxysql ProxySQLPlugin
 

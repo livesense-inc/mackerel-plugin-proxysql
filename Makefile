@@ -1,6 +1,6 @@
 REPO = mackerel-plugin-proxysql
 BIN = $(REPO)
-VERSION = 0.0.2
+VERSION = 0.0.3
 
 all: clean test build
 
